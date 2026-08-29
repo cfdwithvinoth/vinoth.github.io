@@ -5,35 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Name — Portfolio</title>
 <meta name="description" content="Portfolio of Your Name.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!--
   ============================================================
-  HOW TO EDIT THIS FILE (read me first)
+  HOW TO EDIT THIS FILE
   ============================================================
-  1. Search for the word "EDIT:" — every one marks something
-     you should personalize (name, bio, links, projects).
-  2. Duplicate the <article class="project"> block to add more
-     projects. Delete the ones you don't need yet.
-  3. Colors and fonts live in the :root block below — change
-     the hex codes there to re-theme the whole site instantly.
-  4. This is ONE file. No build tools, no npm needed. Just
-     edit and re-upload (see the guide doc for how to publish).
+  1. Search for "EDIT:" — every hit is something to personalize.
+  2. Duplicate <article class="project-card"> to add more projects.
+  3. Colors + fonts are all in the :root block — change hex codes
+     there to retheme the whole site in one place.
+  4. Everything (HTML, CSS, JS) lives in this one file. No build
+     tools needed — edit, save, re-upload to GitHub.
   ============================================================
 -->
 
 <style>
   :root {
-    /* EDIT: palette — change these 6 values to re-theme everything */
-    --paper: #FBFAF6;
-    --ink: #1C1F22;
-    --ink-soft: #55595E;
-    --line: #DAD5C8;
-    --blueprint: #2B5C86;   /* primary accent — links, headings */
-    --signal: #B8860B;      /* secondary accent — used sparingly */
+    /* EDIT: palette — full wisteria set, background = swatch 4 (light periwinkle) */
+    --swatch1: #241B2F;   /* deepest — main text */
+    --swatch2: #4A3B63;   /* dark purple — links, primary accent */
+    --swatch3: #7C6FA3;   /* medium purple — secondary accent, hovers */
+    --swatch4: #A6A0C9;   /* light periwinkle — PAGE BACKGROUND */
+    --swatch5: #CBC8E3;   /* palest lavender — card panels */
+
+    --bg: var(--swatch4);
+    --bg-panel: var(--swatch5);
+    --ink: var(--swatch1);
+    --ink-soft: var(--swatch2);
+    --gold: var(--swatch2);       /* primary accent */
+    --gold-soft: var(--swatch3);  /* secondary accent */
+    --emerald: var(--swatch1);
+    --wine: var(--swatch3);
+    --line: rgba(36, 27, 47, 0.16);
+
+    /* small India accent — used sparingly, see .in-strip */
+    --saffron: #FF9933;
+    --india-white: #F4F0E6;
+    --india-green: #138808;
 
     --display: 'Fraunces', Georgia, serif;
-    --mono: 'IBM Plex Mono', 'Courier New', monospace;
     --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  /* thin tricolor accent — one small, deliberate touch */
+  .in-strip {
+    height: 3px;
+    background: linear-gradient(90deg, var(--saffron) 0 33.3%, var(--india-white) 33.3% 66.6%, var(--india-green) 66.6% 100%);
+    opacity: 0.9;
   }
 
   * { box-sizing: border-box; }
@@ -41,175 +62,228 @@
 
   body {
     margin: 0;
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
     font-family: var(--body);
-    line-height: 1.55;
+    line-height: 1.6;
     background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(124,111,163,0.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(203,200,227,0.55), transparent 60%);
+    background-repeat: no-repeat;
   }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
 
-  a { color: var(--blueprint); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--blueprint); outline-offset: 3px; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
 
-  .tag {
+  .eyebrow {
     font-family: var(--mono);
     font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--gold);
   }
+
+  /* reveal-on-scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   /* ---------- NAV ---------- */
   header.nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(251,250,246,0.9);
-    backdrop-filter: blur(6px);
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(166,160,201,0.82);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 24px; max-width: 920px; margin: 0 auto;
+    padding: 18px 24px; max-width: 980px; margin: 0 auto;
   }
   .nav-inner .mark {
-    font-family: var(--mono); font-weight: 600; font-size: 0.95rem;
+    font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink);
   }
-  .nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
-  .nav-links a { color: var(--ink); font-size: 0.9rem; }
-  .nav-links a:hover { color: var(--blueprint); }
+  .nav-inner .mark span { color: var(--gold); }
+  .nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    color: var(--ink-soft); font-size: 0.88rem; position: relative; padding-bottom: 3px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width .25s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
 
   /* ---------- HERO ---------- */
-  .hero {
-    padding: 96px 0 72px;
-    border-bottom: 1px solid var(--line);
+  .hero { padding: 120px 0 90px; position: relative; }
+  .hero .eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--bg-panel);
+    padding: 6px 16px; margin-bottom: 28px;
+    font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
   }
-  .hero .tag { margin-bottom: 18px; display: inline-block; border: 1px solid var(--line); padding: 4px 10px; background: var(--paper); }
+  .eyebrow-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); box-shadow: 0 0 8px rgba(124,111,163,0.7); }
   .hero h1 {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-size: clamp(2.6rem, 6.5vw, 4.4rem);
     line-height: 1.05;
-    margin: 0 0 18px;
-    max-width: 12ch;
+    margin: 0 0 22px;
+    max-width: 14ch;
   }
-  .hero .role {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 46ch;
-    margin: 0 0 28px;
+  .hero h1 .accent {
+    background: linear-gradient(100deg, var(--swatch1), var(--swatch3) 45%, var(--swatch1));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .role { font-size: 1.2rem; color: var(--ink-soft); max-width: 50ch; margin: 0 0 34px; }
+  .hero .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
   .btn {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    padding: 12px 20px;
-    border: 1px solid var(--ink);
-    display: inline-block;
-    color: var(--ink);
-    transition: all .15s ease;
+    font-family: var(--mono); font-size: 0.85rem;
+    padding: 13px 24px; border-radius: 2px;
+    display: inline-block; border: 1px solid var(--line);
+    color: var(--ink); transition: all .2s ease; letter-spacing: 0.02em;
   }
-  .btn:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
-  .btn.primary { background: var(--blueprint); border-color: var(--blueprint); color: var(--paper); }
-  .btn.primary:hover { background: var(--ink); border-color: var(--ink); }
+  .btn:hover { border-color: var(--gold); color: var(--gold); text-decoration: none; }
+  .btn.primary {
+    background: linear-gradient(120deg, var(--swatch2), var(--swatch3));
+    border-color: transparent; color: var(--swatch5); font-weight: 600;
+  }
+  .btn.primary:hover { filter: brightness(1.1); color: var(--swatch5); }
+
+  hr.divider {
+    border: none; height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent 70%);
+    margin: 0;
+  }
 
   /* ---------- SECTION SHARED ---------- */
-  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
-  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 36px; }
-  .section-head .fig { font-family: var(--mono); color: var(--signal); font-size: 0.85rem; }
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .section-head { margin-bottom: 44px; }
   .section-head h2 {
-    font-family: var(--display);
-    font-size: 1.7rem;
-    margin: 0;
-    font-weight: 600;
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: 10px 0 0;
   }
 
-  /* ---------- ABOUT / SERVICES ---------- */
-  .about-lead { max-width: 62ch; font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 32px; }
-  .capability-grid {
+  /* ---------- ABOUT ---------- */
+  .about-lead { max-width: 66ch; font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 40px; }
+  .skill-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--line);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .skill-card {
+    background: var(--bg-panel);
     border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 24px;
+    transition: transform .25s ease, border-color .25s ease;
   }
-  .capability {
-    background: var(--paper);
-    padding: 22px;
-  }
-  .capability .tag { color: var(--blueprint); }
-  .capability h3 { font-size: 1rem; margin: 8px 0 6px; }
-  .capability p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+  .skill-card:hover { transform: translateY(-4px); border-color: var(--gold-soft); }
+  .skill-card .num { font-family: var(--mono); color: var(--gold); font-size: 0.8rem; }
+  .skill-card h3 { font-family: var(--display); font-size: 1.05rem; margin: 10px 0 8px; font-weight: 600; }
+  .skill-card p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
 
-  /* ---------- EXPERIENCE / EDUCATION ---------- */
-  .timeline { display: grid; grid-template-columns: 1fr; gap: 22px; }
-  .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 18px; }
-  .timeline-item .when { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); padding-top: 3px; }
-  .timeline-item h3 { margin: 0 0 4px; font-size: 1rem; }
-  .timeline-item .where { color: var(--ink-soft); font-size: 0.9rem; margin: 0 0 6px; }
-  .timeline-item p.desc { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+  /* ---------- EXPERIENCE ---------- */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 130px 1px 1fr;
+    gap: 24px; padding-bottom: 36px; position: relative;
+  }
+  .timeline-item .rail { background: var(--line); position: relative; }
+  .timeline-item .rail::before {
+    content: ''; position: absolute; top: 4px; left: -3.5px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); box-shadow: 0 0 10px rgba(74,59,99,0.5);
+  }
+  .timeline-item .when { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); padding-top: 1px; }
+  .timeline-item h3 { font-family: var(--display); margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; }
+  .timeline-item .where { color: var(--gold); font-size: 0.9rem; margin: 0 0 8px; }
+  .timeline-item p.desc { margin: 0; font-size: 0.94rem; color: var(--ink-soft); max-width: 60ch; }
 
   /* ---------- PROJECTS ---------- */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
   }
-  .project {
+  .project-card {
+    background: var(--bg-panel);
     border: 1px solid var(--line);
-    background: var(--paper);
+    border-radius: 8px;
+    overflow: hidden;
     display: flex; flex-direction: column;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
-  .project .thumb {
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold-soft);
+    box-shadow: 0 20px 40px -20px rgba(36,27,47,0.35), 0 0 0 1px rgba(74,59,99,0.15);
+  }
+  .project-card .thumb {
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--line), var(--paper));
+    background: linear-gradient(135deg, var(--swatch3), var(--swatch5));
     display: flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink);
     border-bottom: 1px solid var(--line);
+    position: relative; overflow: hidden;
   }
-  .project .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .project-body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .project .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .project-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .chips { display: flex; gap: 7px; flex-wrap: wrap; }
   .chip {
     font-family: var(--mono); font-size: 0.68rem;
-    border: 1px solid var(--line); padding: 2px 8px;
-    color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px 10px; color: var(--gold);
   }
-  .project h3 { margin: 4px 0 0; font-size: 1.05rem; }
-  .project p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); flex: 1; }
-  .project .links { display: flex; gap: 14px; font-family: var(--mono); font-size: 0.8rem; }
+  .project-card h3 { font-family: var(--display); margin: 4px 0 0; font-size: 1.15rem; font-weight: 600; }
+  .project-card p.desc { margin: 0; font-size: 0.92rem; color: var(--ink-soft); flex: 1; }
+  .project-card .links { display: flex; gap: 18px; font-family: var(--mono); font-size: 0.8rem; padding-top: 6px; border-top: 1px solid var(--line); }
+
+  /* ---------- PUBLICATIONS / EXTRA (optional block) ---------- */
+  .pub-list { display: flex; flex-direction: column; gap: 18px; }
+  .pub-item { display: grid; grid-template-columns: 90px 1fr; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-item .year { font-family: var(--mono); color: var(--gold); font-size: 0.85rem; }
+  .pub-item h4 { margin: 0 0 4px; font-size: 0.98rem; font-weight: 600; }
+  .pub-item p { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
 
   /* ---------- CONTACT ---------- */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } .timeline-item { grid-template-columns: 1fr; } }
-  .contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-  .contact-list a { font-family: var(--mono); font-size: 0.95rem; }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: start; }
+  @media (max-width: 680px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 90px 1px 1fr; }
+  }
+  .contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  .contact-list a { font-family: var(--mono); font-size: 1rem; }
+  .contact-list .label { display: block; font-family: var(--body); font-size: 0.75rem; color: var(--ink-soft); margin-bottom: 2px; }
 
   footer {
-    padding: 28px 0 48px;
+    padding: 32px 0 56px;
     font-family: var(--mono);
     font-size: 0.78rem;
     color: var(--ink-soft);
     text-align: center;
+    border-top: 1px solid var(--line);
   }
 </style>
 </head>
 <body>
 
+<div class="in-strip"></div>
+
 <header class="nav">
   <div class="nav-inner">
-    <!-- EDIT: your initials or short mark -->
-    <span class="mark">YN /</span>
+    <!-- EDIT: your initials -->
+    <span class="mark">Y<span>N</span></span>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -222,61 +296,68 @@
 <main class="wrap">
 
   <!-- ================= HERO ================= -->
-  <section class="hero" style="border-bottom: none;">
-    <span class="tag">● Building this portfolio, one project at a time</span>
-    <!-- EDIT: your name -->
-    <h1>Your Name</h1>
-    <!-- EDIT: one-line role / focus -->
-    <p class="role">A short line describing what you do and who you help — e.g. "Frontend developer turning design mockups into fast, accessible web apps."</p>
-    <div class="cta-row">
+  <section class="hero" style="border-top: none;">
+    <div class="eyebrow-pill reveal"><span class="dot"></span> Open to opportunities · Tamil Nadu, India 🇮🇳</div>
+    <!-- EDIT: your name + headline -->
+    <h1 class="reveal">Your <span class="accent">Name</span></h1>
+    <p class="role reveal">A short line on what you do and who you help — e.g. "Aspiring developer building clean, thoughtful web experiences."</p>
+    <div class="cta-row reveal">
       <a class="btn primary" href="#contact">Get in touch →</a>
-      <a class="btn" href="#projects">See my work</a>
+      <a class="btn" href="#projects">View projects</a>
     </div>
   </section>
 
-  <!-- ================= ABOUT / WHAT I DO ================= -->
+  <!-- ================= ABOUT ================= -->
   <section id="about">
-    <div class="section-head"><span class="fig">FIG.01</span><h2>What I do</h2></div>
-    <p class="about-lead">
-      <!-- EDIT: 2-3 sentence summary about you -->
-      A couple of sentences about your background and what kind of work excites you.
-      This section can grow as you figure out your focus — leave it short for now.
+    <div class="section-head reveal">
+      <span class="eyebrow">01 — Profile</span>
+      <h2>What I do</h2>
+    </div>
+    <p class="about-lead reveal">
+      <!-- EDIT: 2-4 sentence bio -->
+      A couple of sentences about your background, what you're currently learning or working
+      on, and what kind of work excites you. This can grow as your focus sharpens.
     </p>
-    <div class="capability-grid">
-      <!-- EDIT: duplicate/edit these — 3 to 6 skill or service areas -->
-      <div class="capability">
-        <span class="tag">01</span>
-        <h3>Skill / Service area</h3>
-        <p>One or two lines on what this covers and the kind of outcome you deliver.</p>
+    <div class="skill-grid">
+      <!-- EDIT: duplicate/edit — 3 to 6 skills -->
+      <div class="skill-card reveal">
+        <span class="num">01</span>
+        <h3>Skill / Focus area</h3>
+        <p>One or two lines on this skill and what you can do with it.</p>
       </div>
-      <div class="capability">
-        <span class="tag">02</span>
-        <h3>Skill / Service area</h3>
-        <p>One or two lines on what this covers and the kind of outcome you deliver.</p>
+      <div class="skill-card reveal">
+        <span class="num">02</span>
+        <h3>Skill / Focus area</h3>
+        <p>One or two lines on this skill and what you can do with it.</p>
       </div>
-      <div class="capability">
-        <span class="tag">03</span>
-        <h3>Skill / Service area</h3>
-        <p>One or two lines on what this covers and the kind of outcome you deliver.</p>
+      <div class="skill-card reveal">
+        <span class="num">03</span>
+        <h3>Skill / Focus area</h3>
+        <p>One or two lines on this skill and what you can do with it.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= EXPERIENCE / EDUCATION ================= -->
+  <!-- ================= EXPERIENCE ================= -->
   <section id="experience">
-    <div class="section-head"><span class="fig">FIG.02</span><h2>Background</h2></div>
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — Timeline</span>
+      <h2>Background</h2>
+    </div>
     <div class="timeline">
-      <!-- EDIT: duplicate this block for each role/degree -->
-      <div class="timeline-item">
+      <!-- EDIT: duplicate for each role/degree -->
+      <div class="timeline-item reveal">
         <div class="when">2024 — Now</div>
+        <div class="rail"></div>
         <div>
           <h3>Role / Position title</h3>
           <p class="where">Company or Institution</p>
           <p class="desc">One line on what you did or are studying.</p>
         </div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item reveal">
         <div class="when">2020 — 2024</div>
+        <div class="rail"></div>
         <div>
           <h3>Degree / Program</h3>
           <p class="where">School name</p>
@@ -288,18 +369,19 @@
 
   <!-- ================= PROJECTS ================= -->
   <section id="projects">
-    <div class="section-head"><span class="fig">FIG.03</span><h2>Selected work</h2></div>
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — Selected work</span>
+      <h2>Projects</h2>
+    </div>
     <div class="projects-grid">
 
-      <!-- EDIT: duplicate this <article> block for every project -->
-      <article class="project">
+      <!-- EDIT: duplicate this whole <article> for every project -->
+      <article class="project-card reveal">
         <div class="thumb"><span>project image — 16:9</span></div>
         <div class="project-body">
-          <div class="chips">
-            <span class="chip">Tag</span><span class="chip">Tag</span>
-          </div>
+          <div class="chips"><span class="chip">Tag</span><span class="chip">Tag</span></div>
           <h3>Project title</h3>
-          <p>One or two sentences: the problem, what you built, and the result.</p>
+          <p class="desc">The problem, what you built, and the result — 1-2 sentences.</p>
           <div class="links">
             <a href="#">↗ Live</a>
             <a href="#">◆ Code</a>
@@ -307,14 +389,12 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project-card reveal">
         <div class="thumb"><span>project image — 16:9</span></div>
         <div class="project-body">
-          <div class="chips">
-            <span class="chip">Tag</span><span class="chip">Tag</span>
-          </div>
+          <div class="chips"><span class="chip">Tag</span><span class="chip">Tag</span></div>
           <h3>Project title</h3>
-          <p>One or two sentences: the problem, what you built, and the result.</p>
+          <p class="desc">The problem, what you built, and the result — 1-2 sentences.</p>
           <div class="links">
             <a href="#">↗ Live</a>
             <a href="#">◆ Code</a>
@@ -322,24 +402,40 @@
         </div>
       </article>
 
-      <!-- Add a 3rd, 4th, etc. by copy-pasting an <article class="project">...</article> block -->
+      <article class="project-card reveal">
+        <div class="thumb"><span>project image — 16:9</span></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">Tag</span><span class="chip">Tag</span></div>
+          <h3>Project title</h3>
+          <p class="desc">The problem, what you built, and the result — 1-2 sentences.</p>
+          <div class="links">
+            <a href="#">↗ Live</a>
+            <a href="#">◆ Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Add a 4th, 5th... by copy-pasting an <article class="project-card">...</article> block -->
 
     </div>
   </section>
 
   <!-- ================= CONTACT ================= -->
   <section id="contact">
-    <div class="section-head"><span class="fig">FIG.04</span><h2>Get in touch</h2></div>
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Contact</span>
+      <h2>Get in touch</h2>
+    </div>
     <div class="contact-grid">
-      <p class="about-lead" style="margin-bottom:0;">
+      <p class="about-lead reveal" style="margin-bottom:0;">
         <!-- EDIT: contact invite line -->
         Have a project in mind or just want to say hi? I usually reply within a day or two.
       </p>
-      <ul class="contact-list">
+      <ul class="contact-list reveal">
         <!-- EDIT: your real links -->
-        <li>✉ <a href="mailto:you@example.com">you@example.com</a></li>
-        <li>◆ <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></li>
-        <li>in <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">linkedin.com/in/yourusername</a></li>
+        <li><span class="label">Email</span><a href="mailto:you@example.com">you@example.com</a></li>
+        <li><span class="label">GitHub</span><a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></li>
+        <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">linkedin.com/in/yourusername</a></li>
       </ul>
     </div>
   </section>
@@ -347,9 +443,17 @@
 </main>
 
 <footer>
-  <!-- EDIT: your name / year -->
-  © 2026 Your Name — built with plain HTML &amp; hosted on GitHub Pages
+  <!-- EDIT: your name / year — "வணக்கம்" (Tamil, "greetings") is a small personal touch, remove if you'd rather not -->
+  வணக்கம் · © 2026 Your Name — built with plain HTML &amp; hosted on GitHub Pages
 </footer>
+
+<script>
+  // Subtle scroll-reveal — respects prefers-reduced-motion via the CSS above
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
