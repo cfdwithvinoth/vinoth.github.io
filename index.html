@@ -202,29 +202,68 @@
   .timeline-item p.desc { margin: 0; font-size: 0.92rem; color: var(--ink-soft); max-width: 60ch; }
 
   /* ---------- PROJECTS ---------- */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-  .project-card {
-    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px;
-    overflow: hidden; display: flex; flex-direction: column;
-    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  }
-  .project-card:hover {
-    transform: translateY(-6px); border-color: var(--gold-soft);
-    box-shadow: 0 20px 40px -20px rgba(36,27,47,0.35), 0 0 0 1px rgba(74,59,99,0.15);
-  }
-  .project-card .thumb {
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--swatch3), var(--swatch5));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-size: 0.72rem; color: var(--ink);
-    border-bottom: 1px solid var(--line); text-align: center; padding: 12px;
-  }
-  .project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .chips { display: flex; gap: 7px; flex-wrap: wrap; }
-  .chip { font-family: var(--mono); font-size: 0.68rem; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; color: var(--gold); }
-  .project-card h3 { font-family: var(--display); margin: 4px 0 0; font-size: 1.12rem; font-weight: 600; }
-  .project-card p.desc { margin: 0; font-size: 0.9rem; color: var(--ink-soft); flex: 1; }
-  .project-card .links { display: flex; gap: 18px; font-family: var(--mono); font-size: 0.8rem; padding-top: 6px; border-top: 1px solid var(--line); }
+   <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="section-head reveal"><span class="eyebrow">04 — Selected work</span><h2>Projects</h2></div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card reveal">
+        <div class="thumb"><img src="nozzle.png" alt="Nozzle expansion AI predictions"></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">CFD</span><span class="chip">AI Predictions</span></div>
+          <h3>Nozzle Expansion AI Predictions</h3>
+          <p class="desc">Investigated nozzle expansion characteristics using image-based diagnostics and machine learning predictions to analyze flow behavior.</p>
+          <div class="links"><a href="#">↗ Details soon</a></div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card reveal">
+        <div class="thumb"><img src="oh-region-2.png" alt="OH-Region Analysis"></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Diagnostics</span></div>
+          <h3>OH-Region (2)</h3>
+          <p class="desc">High-speed imaging and OH-PLIF diagnostics to map the flame structure and OH radical distribution in the combustion zone.</p>
+          <div class="links"><a href="#">↗ Details soon</a></div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card reveal">
+        <div class="thumb"><img src="oh-region-3.png" alt="OH-Region Analysis 3"></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Signal Processing</span></div>
+          <h3>OH-Region (3)</h3>
+          <p class="desc">Extended analysis of OH radical regions, studying flame stability limits and combustion dynamics under varying operating conditions.</p>
+          <div class="links"><a href="#">↗ Details soon</a></div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card reveal">
+        <div class="thumb"><img src="shock-flame.png" alt="Shock-Flame Interactions"></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">Combustion</span><span class="chip">Shock Dynamics</span></div>
+          <h3>Shock-Flame Interactions</h3>
+          <p class="desc">Experimental investigation of the complex interactions between shock waves and flame fronts in high-speed reacting flows.</p>
+          <div class="links"><a href="#">↗ Details soon</a></div>
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card reveal">
+        <div class="thumb"><img src="dynamics-sensor.png" alt="Dynamics Sensor Measurements"></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">Sensors</span><span class="chip">Data Analysis</span></div>
+          <h3>Dynamics Sensor Measurements</h3>
+          <p class="desc">Acquisition and analysis of dynamic pressure and sensor measurements to characterize combustion instability and system response.</p>
+          <div class="links"><a href="#">↗ Details soon</a></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
 
   /* ---------- CONTACT ---------- */
   .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: start; }
