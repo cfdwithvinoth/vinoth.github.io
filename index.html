@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinoth D — Aerospace Engineer | CFD & Combustion Research</title>
-<meta name="description" content="Portfolio of Vinoth D — Aerospace Engineer specializing in CFD, combustion diagnostics, and alternative fuel research.">
+<title>Vinoth D — Aerospace Engineer |  Combustion Research</title>
+<meta name="description" content="Portfolio of Vinoth D — Aerospace Engineer specializing in  combustion diagnostics, and alternative fuel research,cfd simulations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -112,14 +112,13 @@
   .timeline-item .where { color: var(--gold); font-size: 0.9rem; margin: 0 0 10px; }
   .timeline-item ul.desc { margin: 0; padding-left: 18px; font-size: 0.92rem; color: var(--ink-soft); }
 
-  /* ---------- PROJECTS & IMAGES (FIXED) ---------- */
+  /* ---------- PROJECTS & IMAGES (The Fix) ---------- */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
   .project-card { background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease; }
   .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgba(36,27,47,0.35); }
   
-  /* The image container */
+  /* Fix: No aspect-ratio, just fixed height and object-fit */
   .project-card .thumb { height: 200px; background: var(--swatch3); border-bottom: 1px solid var(--line); overflow: hidden; }
-  /* Forces the image to fit perfectly inside the container */
   .project-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
@@ -185,7 +184,6 @@
         <a class="btn" href="#projects">View work</a>
       </div>
     </div>
-    <!-- Change vinoth.png if your photo is named differently -->
     <div class="hero-photo"><img src="vinoth.png" alt="Vinoth D"></div>
   </section>
 
@@ -293,16 +291,12 @@
   </section>
 
   <!-- PROJECTS -->
-   <!-- ================= PROJECTS ================= -->
-    <!-- ================= PROJECTS ================= -->
   <section id="projects">
     <div class="section-head"><span class="eyebrow">04 — Selected work</span><h2>Projects</h2></div>
     <div class="projects-grid">
 
       <article class="project-card">
-        <div class="thumb">
-          <img src="./nozzle.png" alt="Nozzle expansion">
-        </div>
+        <div class="thumb"><img src="nozzle.png" alt="Nozzle expansion"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">CFD</span><span class="chip">AI</span></div>
           <h3>Nozzle Expansion AI Predictions</h3>
@@ -311,10 +305,7 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb">
-          <!-- Keep the spaces exactly as they are in the file name -->
-          <img src="./OH-REGION (2).png" alt="OH-Region 2">
-        </div>
+        <div class="thumb"><img src="OH-REGION (2).png" alt="OH-Region 2"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Diagnostics</span></div>
           <h3>OH-Region (2)</h3>
@@ -323,9 +314,7 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb">
-          <img src="./OH-REGION (3).png" alt="OH-Region 3">
-        </div>
+        <div class="thumb"><img src="OH-REGION (3).png" alt="OH-Region 3"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Signal Processing</span></div>
           <h3>OH-Region (3)</h3>
@@ -334,9 +323,7 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb">
-          <img src="./shock-flame.png" alt="Shock-Flame Interactions">
-        </div>
+        <div class="thumb"><img src="shock-flame.png" alt="Shock-Flame Interactions"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">Combustion</span><span class="chip">Shock Dynamics</span></div>
           <h3>Shock-Flame Interactions</h3>
@@ -345,9 +332,7 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb">
-          <img src="./dynamics-sensor.png" alt="Dynamics Sensor">
-        </div>
+        <div class="thumb"><img src="dynamics-sensor.png" alt="Dynamics Sensor"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">Sensors</span><span class="chip">Data Analysis</span></div>
           <h3>Dynamics Sensor Measurements</h3>
@@ -374,6 +359,7 @@
 
     <!-- FORM -->
     <form id="enquiry-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <!-- ⚠️ REPLACE WITH YOUR WEB3FORMS KEY -->
       <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
       <input type="hidden" name="subject" value="New enquiry from portfolio site" />
       <input type="hidden" name="from_name" value="Vinoth Portfolio" />
