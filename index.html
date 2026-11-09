@@ -24,6 +24,10 @@
     --gold-soft: var(--swatch3);
     --line: rgba(36, 27, 47, 0.16);
 
+    --saffron: #FF9933;
+    --india-white: #F4F0E6;
+    --india-green: #138808;
+
     --display: 'Fraunces', Georgia, serif;
     --body: 'Inter', -apple-system, sans-serif;
     --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -59,7 +63,7 @@
 
   /* ---------- NAV ---------- */
   header.nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); }
-  .in-strip { height: 4px; background: linear-gradient(90deg, #FF9933 0 33.3%, #F4F0E6 33.3% 66.6%, #138808 66.6% 100%); }
+  .in-strip { height: 4px; background: linear-gradient(90deg, var(--saffron) 0 33.3%, var(--india-white) 33.3% 66.6%, var(--india-green) 66.6% 100%); }
   .nav-body { background: rgba(166,160,201,0.88); backdrop-filter: blur(10px); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1000px; margin: 0 auto; }
   .nav-inner .mark { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink); }
@@ -108,13 +112,14 @@
   .timeline-item .where { color: var(--gold); font-size: 0.9rem; margin: 0 0 10px; }
   .timeline-item ul.desc { margin: 0; padding-left: 18px; font-size: 0.92rem; color: var(--ink-soft); }
 
-  /* ---------- PROJECTS & IMAGES ---------- */
+  /* ---------- PROJECTS & IMAGES (FIXED) ---------- */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
   .project-card { background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease; }
   .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgba(36,27,47,0.35); }
   
-  /* THIS FIXES THE IMAGE SIZING */
-  .project-card .thumb { aspect-ratio: 16/9; background: var(--swatch3); border-bottom: 1px solid var(--line); overflow: hidden; }
+  /* The image container */
+  .project-card .thumb { height: 200px; background: var(--swatch3); border-bottom: 1px solid var(--line); overflow: hidden; }
+  /* Forces the image to fit perfectly inside the container */
   .project-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
@@ -180,6 +185,7 @@
         <a class="btn" href="#projects">View work</a>
       </div>
     </div>
+    <!-- Change vinoth.png if your photo is named differently -->
     <div class="hero-photo"><img src="vinoth.png" alt="Vinoth D"></div>
   </section>
 
@@ -247,7 +253,6 @@
             <li>Advanced laser diagnostics — OH-PLIF for flame structure analysis</li>
             <li>Hydrogen and CNG combustion — high-speed IOE rig testing and analysis</li>
             <li>Gas turbine combustion dynamics — flame stability studies</li>
-            <li>Operation of high-speed reacting flow test facility</li>
           </ul>
         </div>
       </div>
@@ -260,7 +265,6 @@
           <ul class="desc">
             <li>Analysed industrial compressed-air systems across 15 kW–250 kW capacities</li>
             <li>Ran heat transfer and thermal dissipation studies</li>
-            <li>Performed pressure loss and friction factor calculations</li>
           </ul>
         </div>
       </div>
@@ -273,7 +277,6 @@
           <ul class="desc">
             <li>Supported CAMO for Boeing 737 / 757 aircraft fleet</li>
             <li>Maintained airworthiness records against DGCA standards</li>
-            <li>Tracked Airworthiness Directives (ADs)</li>
           </ul>
         </div>
       </div>
@@ -304,7 +307,8 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb"><img src="OH-REGION%20(2).png" alt="OH-Region 2"></div>
+        <!-- CAPITAL LETTERS FIXED HERE -->
+        <div class="thumb"><img src="OH-REGION (2).png" alt="OH-Region 2"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Diagnostics</span></div>
           <h3>OH-Region (2)</h3>
@@ -313,7 +317,8 @@
       </article>
 
       <article class="project-card">
-        <div class="thumb"><img src="OH-REGION%20(3).png" alt="OH-Region 3"></div>
+        <!-- CAPITAL LETTERS FIXED HERE -->
+        <div class="thumb"><img src="OH-REGION (3).png" alt="OH-Region 3"></div>
         <div class="project-body">
           <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Signal Processing</span></div>
           <h3>OH-Region (3)</h3>
@@ -356,7 +361,7 @@
       </ul>
     </div>
 
-    <!-- WEB3FORMS -->
+    <!-- FORM -->
     <form id="enquiry-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
       <input type="hidden" name="subject" value="New enquiry from portfolio site" />
