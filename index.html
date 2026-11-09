@@ -8,288 +8,549 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!--
+  ============================================================
+  HOW TO USE THIS FILE
+  ============================================================
+  1. Upload your photo as "images/vinoth.jpg" in your repo
+     (create a folder called "images", upload the file there).
+  2. Everything else is already filled in with your real info —
+     search "EDIT:" for the few spots you may still want to tweak
+     (contact links, project URLs once you have them).
+  3. Duplicate <article class="project-card"> to add more projects.
+  ============================================================
+-->
+
 <style>
-/* ============================================================
-   COMPLETE PORTFOLIO STYLES
-   ============================================================ */
-:root {
-  --bg: #faf9f6;
-  --text: #1a1a1a;
-  --muted: #6b6b6b;
-  --accent: #2563eb;
-  --border: #e5e5e5;
-  --card-bg: #ffffff;
-}
+  :root {
+    --swatch1: #241B2F;
+    --swatch2: #4A3B63;
+    --swatch3: #7C6FA3;
+    --swatch4: #A6A0C9;
+    --swatch5: #CBC8E3;
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    --bg: var(--swatch4);
+    --bg-panel: var(--swatch5);
+    --ink: var(--swatch1);
+    --ink-soft: var(--swatch2);
+    --gold: var(--swatch2);
+    --gold-soft: var(--swatch3);
+    --emerald: var(--swatch1);
+    --wine: var(--swatch3);
+    --line: rgba(36, 27, 47, 0.16);
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+    --saffron: #FF9933;
+    --india-white: #F4F0E6;
+    --india-green: #138808;
 
-h1, h2, h3 {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  line-height: 1.2;
-}
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-/* ---- Layout Sections ---- */
-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 80px 24px;
-  border-bottom: 1px solid var(--border);
-}
-section:last-of-type { border-bottom: none; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(124,111,163,0.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(203,200,227,0.55), transparent 60%);
+    background-repeat: no-repeat;
+  }
 
-/* ---- Hero ---- */
-.hero { padding-top: 120px; padding-bottom: 80px; }
-.eyebrow-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85em;
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: 24px;
-}
-.eyebrow-pill .dot {
-  width: 8px; height: 8px;
-  background: #16a34a;
-  border-radius: 50%;
-}
-h1 { font-size: 4rem; margin-bottom: 16px; letter-spacing: -0.02em; }
-h1 .accent { color: var(--accent); }
-.role { font-size: 1.15rem; color: var(--muted); max-width: 700px; margin-bottom: 32px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
 
-/* ---- Buttons ---- */
-.cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 1rem;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--text);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.btn:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.btn.primary { background: var(--text); color: #fff; border-color: var(--text); }
-.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-/* ---- Section Headers ---- */
-.section-head { margin-bottom: 40px; }
-.eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85em;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: block;
-  margin-bottom: 8px;
-}
-h2 { font-size: 2.2rem; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-/* ---- Projects ---- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-  margin-top: 24px;
-}
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s;
-  display: flex;
-  flex-direction: column;
-}
-.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,.08); }
-.project-img { width: 100%; height: 200px; object-fit: cover; display: block; }
-.project-body { padding: 24px; flex-grow: 1; }
-.project-body h3 { font-size: 1.4rem; margin-bottom: 4px; }
-.project-sub { color: var(--muted); font-size: 0.9em; font-family: 'IBM Plex Mono', monospace; margin-bottom: 16px; }
-.project-body p { font-size: 0.95em; margin-bottom: 8px; }
-.project-body strong { font-weight: 600; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
 
-/* ---- Skill Tags ---- */
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.skill-tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75em;
-  background: #f0f0f0;
-  padding: 4px 10px;
-  border-radius: 4px;
-  color: var(--text);
-}
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-/* ---- Skills Section ---- */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 32px; }
-.skill-group h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  /* ---------- NAV (tricolor strip lives here so it never scrolls away) ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 20;
+    border-bottom: 1px solid var(--line);
+  }
+  .in-strip {
+    height: 4px;
+    background: linear-gradient(90deg, var(--saffron) 0 33.3%, var(--india-white) 33.3% 66.6%, var(--india-green) 66.6% 100%);
+  }
+  .nav-body {
+    background: rgba(166,160,201,0.88);
+    backdrop-filter: blur(10px);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1000px; margin: 0 auto;
+  }
+  .nav-inner .mark { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink); }
+  .nav-inner .mark span { color: var(--gold-soft); }
+  .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  .nav-links a { color: var(--ink-soft); font-size: 0.86rem; position: relative; padding-bottom: 3px; }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width .25s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
 
-/* ---- Experience ---- */
-.exp-item {
-  display: grid;
-  grid-template-columns: 200px 2px 1fr;
-  gap: 24px;
-  margin-bottom: 40px;
-}
-.when { font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; color: var(--muted); padding-top: 4px; }
-.rail { background: var(--border); position: relative; }
-.rail::before {
-  content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
-}
-.exp-item h3 { font-size: 1.3rem; margin-bottom: 4px; }
-.where { color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; margin-bottom: 12px; }
-.desc { padding-left: 20px; }
-.desc li { margin-bottom: 6px; font-size: 0.95em; }
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 90px 0 80px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+  }
+  @media (max-width: 720px) { .hero { grid-template-columns: 1fr; text-align: center; } .hero .cta-row { justify-content: center; } .hero .eyebrow-pill{ margin-left:auto; margin-right:auto;} }
+  .hero-photo {
+    width: 190px; height: 190px; border-radius: 50%;
+    overflow: hidden; border: 3px solid var(--bg-panel);
+    box-shadow: 0 18px 40px -14px rgba(36,27,47,0.45), 0 0 0 6px rgba(124,111,163,0.25);
+    justify-self: end;
+  }
+  @media (max-width: 720px) { .hero-photo { justify-self: center; width: 150px; height: 150px; } }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ---- Contact List ---- */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.about-lead { font-size: 1.15rem; color: var(--muted); }
-.contact-list { list-style: none; }
-.contact-list li { display: flex; flex-direction: column; margin-bottom: 20px; }
-.contact-list .label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
-.contact-list a { font-size: 1.05rem; font-weight: 500; }
+  .hero .eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--bg-panel);
+    padding: 6px 16px; margin-bottom: 26px;
+    font-family: var(--mono); font-size: 0.73rem; color: var(--ink-soft);
+  }
+  .eyebrow-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); box-shadow: 0 0 8px rgba(124,111,163,0.7); }
+  .hero h1 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.08; margin: 0 0 16px; max-width: 15ch;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(100deg, var(--swatch1), var(--swatch3) 45%, var(--swatch1));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .role { font-size: 1.12rem; color: var(--ink-soft); max-width: 52ch; margin: 0 0 30px; }
+  .hero .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* ---- Contact Form ---- */
-.contact-form { max-width: 640px; margin: 48px 0 0; display: flex; flex-direction: column; gap: 20px; }
-.form-group-container { display: flex; flex-direction: column; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8em; color: var(--muted); text-transform: uppercase; }
-.form-input, .form-textarea {
-  padding: 14px; border: 1px solid var(--border); border-radius: 8px;
-  font-family: inherit; font-size: 1rem; background: #fff;
-  transition: border-color .15s, box-shadow .15s;
-}
-.form-input:focus, .form-textarea:focus {
-  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,.15);
-}
-.form-textarea { resize: vertical; min-height: 140px; }
-.form-submit { align-self: flex-start; cursor: pointer; font-weight: 600; padding: 14px 32px; }
+  .btn {
+    font-family: var(--mono); font-size: 0.85rem;
+    padding: 13px 24px; border-radius: 2px;
+    display: inline-block; border: 1px solid var(--line);
+    color: var(--ink); transition: all .2s ease; letter-spacing: 0.02em;
+  }
+  .btn:hover { border-color: var(--gold); color: var(--gold); text-decoration: none; }
+  .btn.primary {
+    background: linear-gradient(120deg, var(--swatch2), var(--swatch3));
+    border-color: transparent; color: var(--swatch5); font-weight: 600;
+  }
+  .btn.primary:hover { filter: brightness(1.1); color: var(--swatch5); }
 
-/* ---- Footer ---- */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: var(--muted);
-  font-size: 0.9em;
-  font-family: 'IBM Plex Mono', monospace;
-}
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 78px 0; border-top: 1px solid var(--line); }
+  .section-head { margin-bottom: 40px; }
+  .section-head h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); margin: 8px 0 0; }
 
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
-  h1 { font-size: 3rem; }
-  .exp-item { grid-template-columns: 1fr; gap: 8px; }
-  .rail { display: none; }
-  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-}
+  /* ---------- ABOUT ---------- */
+  .about-lead { max-width: 68ch; font-size: 1.06rem; color: var(--ink-soft); }
+
+  /* ---------- ACHIEVEMENT CALLOUT ---------- */
+  .achievement {
+    margin-top: 32px;
+    display: flex; gap: 18px; align-items: flex-start;
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 22px 24px;
+  }
+  .achievement .medal { font-size: 1.6rem; line-height: 1; }
+  .achievement h3 { margin: 0 0 4px; font-family: var(--display); font-size: 1.05rem; font-weight: 600; }
+  .achievement p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* ---------- SKILLS (grouped) ---------- */
+  .skill-groups { display: flex; flex-direction: column; gap: 22px; }
+  .skill-group {
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 22px 26px;
+    transition: border-color .25s ease;
+  }
+  .skill-group:hover { border-color: var(--gold-soft); }
+  .skill-group .group-title {
+    font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px; display: block;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-size: 0.86rem; padding: 6px 14px; border-radius: 999px;
+    background: rgba(36,27,47,0.06); border: 1px solid var(--line); color: var(--ink);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: grid; grid-template-columns: 140px 1px 1fr; gap: 24px; padding-bottom: 42px; position: relative; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item .rail { background: var(--line); position: relative; }
+  .timeline-item .rail::before {
+    content: ''; position: absolute; top: 4px; left: -3.5px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); box-shadow: 0 0 10px rgba(74,59,99,0.5);
+  }
+  .timeline-item .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); padding-top: 1px; }
+  .timeline-item h3 { font-family: var(--display); margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; }
+  .timeline-item .where { color: var(--gold); font-size: 0.9rem; margin: 0 0 10px; }
+  .timeline-item ul.desc { margin: 0; padding-left: 18px; font-size: 0.92rem; color: var(--ink-soft); }
+  .timeline-item ul.desc li { margin-bottom: 5px; }
+  .timeline-item p.desc { margin: 0; font-size: 0.92rem; color: var(--ink-soft); max-width: 60ch; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+  .project-card {
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-6px); border-color: var(--gold-soft);
+    box-shadow: 0 20px 40px -20px rgba(36,27,47,0.35), 0 0 0 1px rgba(74,59,99,0.15);
+  }
+  .project-card .thumb {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--swatch3), var(--swatch5));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink);
+    border-bottom: 1px solid var(--line); text-align: center; padding: 12px;
+  }
+  .project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .chips { display: flex; gap: 7px; flex-wrap: wrap; }
+  .chip { font-family: var(--mono); font-size: 0.68rem; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; color: var(--gold); }
+  .project-card h3 { font-family: var(--display); margin: 4px 0 0; font-size: 1.12rem; font-weight: 600; }
+  .project-card p.desc { margin: 0; font-size: 0.9rem; color: var(--ink-soft); flex: 1; }
+  .project-card .links { display: flex; gap: 18px; font-family: var(--mono); font-size: 0.8rem; padding-top: 6px; border-top: 1px solid var(--line); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: start; }
+  @media (max-width: 680px) { .contact-grid { grid-template-columns: 1fr; } .timeline-item { grid-template-columns: 100px 1px 1fr; } }
+  .contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  .contact-list a { font-family: var(--mono); font-size: 0.98rem; }
+  .contact-list .label { display: block; font-family: var(--body); font-size: 0.75rem; color: var(--ink-soft); margin-bottom: 2px; }
+
+  footer { padding: 30px 0 52px; font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); text-align: center; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
 
-<!-- ========== HERO ========== -->
-<section id="top" class="hero">
-  <div class="eyebrow-pill reveal"><span class="dot"></span> <span id="hero-status"></span></div>
-  <h1 class="reveal">Vinoth <span class="accent">D</span></h1>
-  <p class="role reveal" id="hero-role"></p>
-  <div class="cta-row reveal">
-    <a class="btn primary" href="#contact">Get in touch →</a>
-    <a class="btn" href="#projects">View work</a>
-    <a class="btn" id="resume-btn" style="display:none" download>Download CV</a>
+<header class="nav">
+  <div class="in-strip"></div>
+  <div class="nav-body">
+    <div class="nav-inner">
+      <span class="mark">V<span>D</span></span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </div>
-  <div id="hero-photo-wrap" class="reveal" style="margin-top:24px;"></div>
-</section>
+</header>
 
-<!-- ========== PROJECTS ========== -->
-<section id="projects">
-  <div class="section-head reveal"><span class="eyebrow">Selected Work</span><h2>Projects</h2></div>
-  <div id="projects-grid" class="projects-grid"></div>
-</section>
+<main class="wrap">
 
-<!-- ========== EXPERIENCE ========== -->
-<section id="experience">
-  <div class="section-head reveal"><span class="eyebrow">Timeline</span><h2>Experience</h2></div>
-  <div id="experience-list"></div>
-</section>
-
-<!-- ========== SKILLS ========== -->
-<section id="skills">
-  <div class="section-head reveal"><span class="eyebrow">Toolkit</span><h2>Skills</h2></div>
-  <div id="skills-list" class="skills-grid"></div>
-</section>
-
-<!-- ========== CONTACT + FORM ========== -->
-<section id="contact" class="contact-section">
-  <div class="section-head reveal"><span class="eyebrow">05 — Contact</span><h2>Get in touch</h2></div>
-
-  <div class="contact-grid">
-    <p class="about-lead reveal">
-      Open to research collaborations and full-time opportunities in aerospace and propulsion.
-    </p>
-    <ul class="contact-list reveal" id="contact-list"></ul>
-  </div>
-
-  <form id="enquiry-form"
-        class="contact-form reveal"
-        action="https://api.web3forms.com/submit"
-        method="POST">
-
-    <!-- ⚠️ REPLACE YOUR_ACCESS_KEY_HERE WITH YOUR ACTUAL WEB3FORMS KEY -->
-    <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
-    
-    <input type="hidden" name="subject"    value="New enquiry from portfolio site" />
-    <input type="hidden" name="from_name"  value="Vinoth Portfolio" />
-    <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
-
-    <div class="form-group-container">
-      <div class="form-group">
-        <label for="name" class="form-label">Name</label>
-        <input id="name" name="name" class="form-input" placeholder="Your name" type="text" required />
-      </div>
-      <div class="form-group">
-        <label for="email" class="form-label">Email</label>
-        <input id="email" name="email" class="form-input" placeholder="you@example.com" type="email" required />
-      </div>
-      <div class="form-group">
-        <label for="phone" class="form-label">Phone (optional)</label>
-        <input id="phone" name="phone" class="form-input" placeholder="+91 …" type="text" />
-      </div>
-      <div class="form-group">
-        <label for="message" class="form-label">Message</label>
-        <textarea id="message" name="message" class="form-textarea" placeholder="Your message…" required></textarea>
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="border-top: none;">
+    <div>
+      <div class="eyebrow-pill reveal"><span class="dot"></span> Open to opportunities · Tamil Nadu, India 🇮🇳</div>
+      <h1 class="reveal">Vinoth <span class="accent">D</span></h1>
+      <p class="role reveal">Aerospace Engineer — Combustion Diagnostics, CFD & Alternative Fuel Research. Currently researching flame stability and laser-based diagnostics for next-generation aero-engines at IIT Madras.</p>
+      <div class="cta-row reveal">
+        <a class="btn primary" href="#contact">Get in touch →</a>
+        <a class="btn" href="#projects">View work</a>
       </div>
     </div>
+    <!-- EDIT: photo — upload your file as images/vinoth.jpg in the repo -->
+    <div class="hero-photo reveal"><img src="vinoth.png" alt="Vinoth D"></div>
+  </section>
 
-    <button class="form-submit btn primary" type="submit">Send Message →</button>
-    <p id="form-status" style="margin-top:12px;"></p>
-  </form>
-</section>
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="section-head reveal"><span class="eyebrow">01 — Profile</span><h2>About</h2></div>
+    <p class="about-lead reveal">
+      I'm an Aeronautical Engineer (BE, Rajalakshmi College of Engineering, Anna University) currently working as a
+      Research Engineer Associate at IIT Madras' National Centre for Combustion R&D (NCCRD), where I study flame
+      structure, combustion stability, and fuel flexibility for gas turbine and aero-engine applications. My work
+      spans CFD simulation, optical diagnostics (OH-PLIF, PDPA, spray imaging), and data-driven analysis using Python —
+      with a growing focus on hydrogen, ammonia, and methane as low-emission propulsion fuels.
+    </p>
+    <div class="achievement reveal">
+      <span class="medal">🏆</span>
+      <div>
+        <h3>Best Paper Award</h3>
+        <p>For the research paper <em>"Influence of 'A' Notch on Jet Decay Characteristics"</em> — presented at a national research conference, recognizing original work on notch geometries and jet flow behaviour.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="section-head reveal"><span class="eyebrow">02 — Capabilities</span><h2>Skills &amp; Focus Areas</h2></div>
+    <div class="skill-groups">
+
+      <div class="skill-group reveal">
+        <span class="group-title">CFD &amp; Simulation</span>
+        <div class="skill-tags">
+          <span class="skill-tag">CFD Analysis</span>
+          <span class="skill-tag">ANSYS Fluent &amp; Meshing</span>
+          <span class="skill-tag">ANSYS Workbench CFX</span>
+          <span class="skill-tag">OpenFOAM (basics)</span>
+          <span class="skill-tag">CATIA V5</span>
+          <span class="skill-tag">MATLAB</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <span class="group-title">Combustion &amp; Optical Diagnostics</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Combustion Dynamics</span>
+          <span class="skill-tag">OH-PLIF</span>
+          <span class="skill-tag">Spray Diagnostics</span>
+          <span class="skill-tag">PDPA</span>
+          <span class="skill-tag">Long-Distance Microscopy</span>
+          <span class="skill-tag">Flame–Shock Interaction Studies</span>
+          <span class="skill-tag">Supercritical Spray Injection</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <span class="group-title">Alternative &amp; Green Fuels</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Hydrogen Combustion</span>
+          <span class="skill-tag">Ammonia Combustion</span>
+          <span class="skill-tag">Methane / CNG Systems</span>
+          <span class="skill-tag">Fuel Flexibility Studies</span>
+          <span class="skill-tag">Gas Turbine Combustion</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <span class="group-title">Controls &amp; Industrial Systems</span>
+        <div class="skill-tags">
+          <span class="skill-tag">PLC Controls</span>
+          <span class="skill-tag">Industrial Compressed-Air Systems</span>
+          <span class="skill-tag">HVAC Integration</span>
+          <span class="skill-tag">Heat Transfer Analysis</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <span class="group-title">Programming &amp; Data</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">contera</span>
+          <span class="skill-tag">matplotlib / seaborn</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">PowerPoint</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="section-head reveal"><span class="eyebrow">03 — Timeline</span><h2>Experience &amp; Education</h2></div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="when">Jan 2026 — Current</div>
+        <div class="rail"></div>
+        <div>
+          <h3>Research  Associate — Research Fellow</h3>
+          <p class="where">IIT Madras (NCCRD) · Chennai, India</p>
+          <ul class="desc">
+            <li>Advanced laser diagnostics — OH-PLIF for flame structure analysis</li>
+            <li>Hydrogen and CNG combustion — high-speed IOE rig testing and analysis</li>
+            <li>Gas turbine combustion dynamics — flame stability studies for aero-engine applications</li>
+            <li>Low-emission propulsion research — sustainable aviation and alternative fuels</li>
+            <li>Operation of high-speed reacting flow test facility and data acquisition</li>
+            <li>Fuel flexibility studies across hydrogen, CNG, and methane</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="when">Jul — Dec 2025</div>
+        <div class="rail"></div>
+        <div>
+          <h3>Mechanical Engineering Technician</h3>
+          <p class="where">Kobelco Industry Compressors · Chennai, India</p>
+          <ul class="desc">
+            <li>Analysed industrial compressed-air systems across 15 kW–250 kW compressor capacities</li>
+            <li>Ran heat transfer and thermal dissipation studies for compressor and HVAC-integrated systems</li>
+            <li>Performed pressure loss and friction factor calculations for pipeline sizing and component selection</li>
+            <li>Worked on HVAC system integration and interfacing with industrial compressed-air networks</li>
+            <li>Assessed energy efficiency of compressed-air systems, identifying savings opportunities across the 15–250 kW range</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="when">Internship</div>
+        <div class="rail"></div>
+        <div>
+          <h3>Aircraft Maintenance Coordinator (CAMO)</h3>
+          <p class="where">Blue Dart Aviation · Chennai, India</p>
+          <ul class="desc">
+            <li>Supported Continuing Airworthiness Management (CAMO) for Blue Dart's <strong>Boeing 737 / 757</strong> aircraft fleet</li>
+            <li>Maintained airworthiness records and monitored aircraft status against DGCA regulatory standards</li>
+            <li>Assisted in developing and scheduling aircraft maintenance programs as per OEM requirements</li>
+            <li>Tracked Airworthiness Directives (ADs) to ensure timely compliance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="when">2021 — 2025</div>
+        <div class="rail"></div>
+        <div>
+          <h3>BE, Aeronautical Engineering</h3>
+          <p class="where">Rajalakshmi College of Engineering (Anna University) · Chennai, India</p>
+          <p class="desc">Thesis: <em>"Effect of Notches on Subsonic, Sonic, and Underexpanded Jets"</em>, conducted at MIT — Anna University. Investigated V- and A-notched nozzle geometries across multiple flow regimes using image-based diagnostics and signal processing; derived lift/drag and power coefficients for passive noise control research.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="section-head reveal"><span class="eyebrow">04 — Selected work</span><h2>Projects</h2></div>
+    <div class="projects-grid">
+
+      <article class="project-card reveal">
+        <div class="thumb"><span>Jet flow diagnostics — notch geometry study</span></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">CFD</span><span class="chip">Signal Processing</span><span class="chip">Best Paper Award</span></div>
+          <h3>Effect of Notches on Subsonic, Sonic &amp; Underexpanded Jets</h3>
+          <p class="desc">Investigated V- and A-notched nozzle geometries for jet flow analysis across multiple regimes using image-based diagnostics. Derived lift/drag and power coefficients for passive noise control — awarded Best Paper for the resulting research.</p>
+          <div class="links"><!-- EDIT: add a link if you have the paper/PDF hosted anywhere --><a href="#">↗ Paper details</a></div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="thumb"><span>OH-PLIF flame structure analysis</span></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">OH-PLIF</span><span class="chip">Combustion</span><span class="chip">Hydrogen/CNG</span></div>
+          <h3>Flame Structure Analysis via Laser Diagnostics</h3>
+          <p class="desc">Ongoing work at IIT Madras NCCRD using OH-PLIF and high-speed imaging to study flame stability and structure in hydrogen and CNG combustion on a high-speed reacting flow rig.</p>
+          <div class="links"><a href="#">↗ More soon</a></div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="thumb"><span>Python data pipeline</span></div>
+        <div class="project-body">
+          <div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Automation</span></div>
+          <h3>Experimental Data Analysis Pipeline</h3>
+          <p class="desc">Python-based workflows (pandas, matplotlib, scikit-learn) for processing and visualizing experimental combustion and flow-diagnostic data — built to speed up analysis across test campaigns.</p>
+          <div class="links"><a href="#">◆ Code coming soon</a></div>
+        </div>
+      </article>
+
+      <!-- Add more by duplicating an <article class="project-card">...</article> block -->
+
+    </div>
+  </section>
+   <!-- ========== CONTACT + FORM ========== -->
+  <section id="contact">
+    <div class="section-head reveal"><span class="eyebrow">04 — Contact</span><h2>Get in touch</h2></div>
+
+    <div class="contact-grid">
+      <p class="about-lead reveal">
+        Open to research collaborations and full-time opportunities in aerospace and propulsion.
+      </p>
+      <ul class="contact-list reveal" id="contact-list"></ul>
+    </div>
+
+    <!-- FORM -->
+    <form id="enquiry-form" class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST">
+      <!-- ⚠️ REPLACE YOUR_ACCESS_KEY_HERE WITH YOUR ACTUAL KEY -->
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      <input type="hidden" name="subject" value="New enquiry from portfolio site" />
+      <input type="hidden" name="from_name" value="Vinoth Portfolio" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+      <div class="form-group-container">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" name="name" class="form-input" placeholder="Your name" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" name="email" class="form-input" placeholder="you@example.com" type="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone (optional)</label>
+          <input id="phone" name="phone" class="form-input" placeholder="+91 …" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Your message…" required></textarea>
+        </div>
+      </div>
+
+      <button class="form-submit btn primary" type="submit">Send Message →</button>
+      <p id="form-status" style="margin-top:12px; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;"></p>
+    </form>
+  </section>
+</main>
+
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="section-head reveal"><span class="eyebrow">05 — Contact</span><h2>Get in touch</h2></div>
+    <div class="contact-grid">
+      <p class="about-lead reveal" style="margin-bottom:0;">
+        Open to research collaborations and full-time opportunities in aerospace and
+        propulsion.
+      </p>
+      <ul class="contact-list reveal">
+        <li><span class="label">Email</span><a href="mailto:vinothaero.eng@gmail.com">vinothaero.eng@gmail.com</a></li>
+        <li><span class="label">Phone / WhatsApp</span><a href="tel:+916379719686">+91 63797 19686</a></li>
+        <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/vinoth-d-2b4927248" target="_blank" rel="noopener">linkedin.com/in/vinoth-d-2b4927248</a></li>
+        <li><span class="label">GitHub</span><a href="https://github.com/cfdwithvinoth" target="_blank" rel="noopener">github.com/cfdwithvinoth</a></li>
+        <li><span class="label">Location</span>Kallagam 621653, Tiruchirapalli, Tamil Nadu, India</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  நன்றி - Thanks For Visiting · © 2026 Vinoth D — built with plain HTML &amp; hosted on GitHub Pages
+  நன்றி -Thanks For Visiting · © 2026 Vinoth D — built with plain HTML &amp; hosted on GitHub Pages
 </footer>
 
-<!-- Make sure these two files exist in your repository root -->
-<script src="data.js"></script>
-<script src="render.js"></script>
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
 </body>
 </html>
