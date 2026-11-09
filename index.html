@@ -7,11 +7,10 @@
 <meta name="description" content="Portfolio of Vinoth D — Aerospace Engineer specializing in CFD, combustion diagnostics, and alternative fuel research.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+
+<style>
 /* ============================================================
-   FULL PORTFOLIO STYLES
+   COMPLETE PORTFOLIO STYLES
    ============================================================ */
 :root {
   --bg: #faf9f6;
@@ -203,6 +202,10 @@ footer {
   .rail { display: none; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
 }
+</style>
+</head>
+<body>
+
 <!-- ========== HERO ========== -->
 <section id="top" class="hero">
   <div class="eyebrow-pill reveal"><span class="dot"></span> <span id="hero-status"></span></div>
@@ -245,16 +248,16 @@ footer {
     <ul class="contact-list reveal" id="contact-list"></ul>
   </div>
 
-  <!-- Web3Forms form -->
   <form id="enquiry-form"
         class="contact-form reveal"
         action="https://api.web3forms.com/submit"
         method="POST">
 
+    <!-- ⚠️ REPLACE YOUR_ACCESS_KEY_HERE WITH YOUR ACTUAL WEB3FORMS KEY -->
     <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
+    
     <input type="hidden" name="subject"    value="New enquiry from portfolio site" />
     <input type="hidden" name="from_name"  value="Vinoth Portfolio" />
-    <!-- Honeypot: bots fill this, humans don't -->
     <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
 
     <div class="form-group-container">
@@ -285,6 +288,7 @@ footer {
   நன்றி - Thanks For Visiting · © 2026 Vinoth D — built with plain HTML &amp; hosted on GitHub Pages
 </footer>
 
+<!-- Make sure these two files exist in your repository root -->
 <script src="data.js"></script>
 <script src="render.js"></script>
 </body>
