@@ -8,19 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<!--
-  ============================================================
-  HOW TO USE THIS FILE
-  ============================================================
-  1. Upload your photo as "images/vinoth.jpg" in your repo
-     (create a folder called "images", upload the file there).
-  2. Everything else is already filled in with your real info —
-     search "EDIT:" for the few spots you may still want to tweak
-     (contact links, project URLs once you have them).
-  3. Duplicate <article class="project-card"> to add more projects.
-  ============================================================
--->
-
 <style>
   :root {
     --swatch1: #241B2F;
@@ -246,6 +233,21 @@
   .contact-list a { font-family: var(--mono); font-size: 0.98rem; }
   .contact-list .label { display: block; font-family: var(--body); font-size: 0.75rem; color: var(--ink-soft); margin-bottom: 2px; }
 
+  /* ---------- NEW FORM STYLES (MATCHING YOUR THEME) ---------- */
+  .contact-form { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; background: var(--bg-panel); padding: 32px; border-radius: 8px; border: 1px solid var(--line); }
+  .form-group-container { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; color: var(--gold); }
+  .form-input, .form-textarea {
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 4px;
+    font-family: var(--body); font-size: 0.95rem; background: var(--bg);
+    color: var(--ink); transition: border-color .2s;
+  }
+  .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--gold); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-submit { align-self: flex-start; cursor: pointer; margin-top: 8px; }
+  #form-status { font-family: var(--mono); font-size: 0.85rem; margin-top: 8px; }
+
   footer { padding: 30px 0 52px; font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); text-align: center; border-top: 1px solid var(--line); }
 </style>
 </head>
@@ -280,7 +282,6 @@
         <a class="btn" href="#projects">View work</a>
       </div>
     </div>
-    <!-- EDIT: photo — upload your file as images/vinoth.jpg in the repo -->
     <div class="hero-photo reveal"><img src="vinoth.png" alt="Vinoth D"></div>
   </section>
 
@@ -448,7 +449,7 @@
           <div class="chips"><span class="chip">CFD</span><span class="chip">Signal Processing</span><span class="chip">Best Paper Award</span></div>
           <h3>Effect of Notches on Subsonic, Sonic &amp; Underexpanded Jets</h3>
           <p class="desc">Investigated V- and A-notched nozzle geometries for jet flow analysis across multiple regimes using image-based diagnostics. Derived lift/drag and power coefficients for passive noise control — awarded Best Paper for the resulting research.</p>
-          <div class="links"><!-- EDIT: add a link if you have the paper/PDF hosted anywhere --><a href="#">↗ Paper details</a></div>
+          <div class="links"><a href="#">↗ Paper details</a></div>
         </div>
       </article>
 
@@ -472,24 +473,30 @@
         </div>
       </article>
 
-      <!-- Add more by duplicating an <article class="project-card">...</article> block -->
-
     </div>
   </section>
-   <!-- ========== CONTACT + FORM ========== -->
-  <section id="contact">
-    <div class="section-head reveal"><span class="eyebrow">04 — Contact</span><h2>Get in touch</h2></div>
 
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="section-head reveal"><span class="eyebrow">05 — Contact</span><h2>Get in touch</h2></div>
     <div class="contact-grid">
-      <p class="about-lead reveal">
-        Open to research collaborations and full-time opportunities in aerospace and propulsion.
+      <p class="about-lead reveal" style="margin-bottom:0;">
+        Open to research collaborations and full-time opportunities in aerospace and
+        propulsion.
       </p>
-      <ul class="contact-list reveal" id="contact-list"></ul>
+      <ul class="contact-list reveal">
+        <li><span class="label">Email</span><a href="mailto:vinothaero.eng@gmail.com">vinothaero.eng@gmail.com</a></li>
+        <li><span class="label">Phone / WhatsApp</span><a href="tel:+916379719686">+91 63797 19686</a></li>
+        <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/vinoth-d-2b4927248" target="_blank" rel="noopener">linkedin.com/in/vinoth-d-2b4927248</a></li>
+        <li><span class="label">GitHub</span><a href="https://github.com/cfdwithvinoth" target="_blank" rel="noopener">github.com/cfdwithvinoth</a></li>
+        <li><span class="label">Location</span>Kallagam 621653, Tiruchirapalli, Tamil Nadu, India</li>
+      </ul>
     </div>
 
-    <!-- FORM -->
+    <!-- ================= ENQUIRY FORM (ADDED) ================= -->
     <form id="enquiry-form" class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST">
-      <!-- ⚠️ REPLACE YOUR_ACCESS_KEY_HERE WITH YOUR ACTUAL KEY -->
+      
+      <!-- ⚠️ REPLACE YOUR_ACCESS_KEY_HERE WITH YOUR ACTUAL WEB3FORMS KEY -->
       <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
       <input type="hidden" name="subject" value="New enquiry from portfolio site" />
       <input type="hidden" name="from_name" value="Vinoth Portfolio" />
@@ -515,28 +522,8 @@
       </div>
 
       <button class="form-submit btn primary" type="submit">Send Message →</button>
-      <p id="form-status" style="margin-top:12px; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;"></p>
+      <p id="form-status"></p>
     </form>
-  </section>
-</main>
-
-
-  <!-- ================= CONTACT ================= -->
-  <section id="contact">
-    <div class="section-head reveal"><span class="eyebrow">05 — Contact</span><h2>Get in touch</h2></div>
-    <div class="contact-grid">
-      <p class="about-lead reveal" style="margin-bottom:0;">
-        Open to research collaborations and full-time opportunities in aerospace and
-        propulsion.
-      </p>
-      <ul class="contact-list reveal">
-        <li><span class="label">Email</span><a href="mailto:vinothaero.eng@gmail.com">vinothaero.eng@gmail.com</a></li>
-        <li><span class="label">Phone / WhatsApp</span><a href="tel:+916379719686">+91 63797 19686</a></li>
-        <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/vinoth-d-2b4927248" target="_blank" rel="noopener">linkedin.com/in/vinoth-d-2b4927248</a></li>
-        <li><span class="label">GitHub</span><a href="https://github.com/cfdwithvinoth" target="_blank" rel="noopener">github.com/cfdwithvinoth</a></li>
-        <li><span class="label">Location</span>Kallagam 621653, Tiruchirapalli, Tamil Nadu, India</li>
-      </ul>
-    </div>
   </section>
 
 </main>
@@ -546,10 +533,44 @@
 </footer>
 
 <script>
+  // Keep your existing reveal animations
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Form submission logic
+  const form = document.getElementById('enquiry-form');
+  const status = document.getElementById('form-status');
+  
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Sending…';
+    status.style.color = 'var(--ink-soft)';
+
+    const payload = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      
+      if (json.success) {
+        status.textContent = '✅ Thanks! Your message has been sent.';
+        status.style.color = 'var(--india-green)';
+        form.reset();
+      } else {
+        status.textContent = '❌ ' + (json.message || 'Submission failed. Please email directly.');
+        status.style.color = '#dc2626';
+      }
+    } catch (err) {
+      status.textContent = '❌ Network error. Please email directly.';
+      status.style.color = '#dc2626';
+    }
+  });
 </script>
 
 </body>
