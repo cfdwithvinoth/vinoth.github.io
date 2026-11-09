@@ -10,7 +10,199 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+/* ============================================================
+   FULL PORTFOLIO STYLES
+   ============================================================ */
+:root {
+  --bg: #faf9f6;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #2563eb;
+  --border: #e5e5e5;
+  --card-bg: #ffffff;
+}
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Layout Sections ---- */
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  border-bottom: 1px solid var(--border);
+}
+section:last-of-type { border-bottom: none; }
+
+/* ---- Hero ---- */
+.hero { padding-top: 120px; padding-bottom: 80px; }
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85em;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.eyebrow-pill .dot {
+  width: 8px; height: 8px;
+  background: #16a34a;
+  border-radius: 50%;
+}
+h1 { font-size: 4rem; margin-bottom: 16px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--accent); }
+.role { font-size: 1.15rem; color: var(--muted); max-width: 700px; margin-bottom: 32px; }
+
+/* ---- Buttons ---- */
+.cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.btn.primary { background: var(--text); color: #fff; border-color: var(--text); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+
+/* ---- Section Headers ---- */
+.section-head { margin-bottom: 40px; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85em;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+h2 { font-size: 2.2rem; }
+
+/* ---- Projects ---- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 24px;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,.08); }
+.project-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.project-body { padding: 24px; flex-grow: 1; }
+.project-body h3 { font-size: 1.4rem; margin-bottom: 4px; }
+.project-sub { color: var(--muted); font-size: 0.9em; font-family: 'IBM Plex Mono', monospace; margin-bottom: 16px; }
+.project-body p { font-size: 0.95em; margin-bottom: 8px; }
+.project-body strong { font-weight: 600; }
+
+/* ---- Skill Tags ---- */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.skill-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75em;
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: var(--text);
+}
+
+/* ---- Skills Section ---- */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 32px; }
+.skill-group h3 { font-size: 1.2rem; margin-bottom: 12px; }
+
+/* ---- Experience ---- */
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 2px 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.when { font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; color: var(--muted); padding-top: 4px; }
+.rail { background: var(--border); position: relative; }
+.rail::before {
+  content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
+}
+.exp-item h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.where { color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; margin-bottom: 12px; }
+.desc { padding-left: 20px; }
+.desc li { margin-bottom: 6px; font-size: 0.95em; }
+
+/* ---- Contact List ---- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.about-lead { font-size: 1.15rem; color: var(--muted); }
+.contact-list { list-style: none; }
+.contact-list li { display: flex; flex-direction: column; margin-bottom: 20px; }
+.contact-list .label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75em; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
+.contact-list a { font-size: 1.05rem; font-weight: 500; }
+
+/* ---- Contact Form ---- */
+.contact-form { max-width: 640px; margin: 48px 0 0; display: flex; flex-direction: column; gap: 20px; }
+.form-group-container { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8em; color: var(--muted); text-transform: uppercase; }
+.form-input, .form-textarea {
+  padding: 14px; border: 1px solid var(--border); border-radius: 8px;
+  font-family: inherit; font-size: 1rem; background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-input:focus, .form-textarea:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+.form-textarea { resize: vertical; min-height: 140px; }
+.form-submit { align-self: flex-start; cursor: pointer; font-weight: 600; padding: 14px 32px; }
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 0.9em;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  .rail { display: none; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+}
 <!-- ========== HERO ========== -->
 <section id="top" class="hero">
   <div class="eyebrow-pill reveal"><span class="dot"></span> <span id="hero-status"></span></div>
