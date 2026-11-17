@@ -359,7 +359,7 @@
 
     <!-- FORM -->
     <form id="enquiry-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-      <!-- ⚠️ REPLACE WITH YOUR WEB3FORMS KEY -->
+      <!-- REPLACE WITH YOUR WEB3FORMS KEY -->
       <input type="hidden" name="access_key" value="5d0c13ab-80ea-4b64-a792-b724af6d9d43" />
       <input type="hidden" name="subject" value="New enquiry from portfolio site" />
       <input type="hidden" name="from_name" value="Vinoth Portfolio" />
@@ -409,7 +409,7 @@
         const json = await res.json();
         if (json.success) {
           status.textContent = '✅ Thanks! Your message has been sent.';
-          status.style.color = '#138808';
+          status.style.color = '#062D49;';
           form.reset();
         } else {
           status.textContent = '❌ Error. Please email directly.';
@@ -424,6 +424,5 @@
 </script>
   <script data-goatcounter="https://cfdwithvinoth.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>
