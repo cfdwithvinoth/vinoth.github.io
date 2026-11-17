@@ -9,12 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --swatch1: #241B2F;
-    --swatch2: #4A3B63;
-    --swatch3: #7C6FA3;
-    --swatch4: #A6A0C9;
-    --swatch5: #CBC8E3;
+ /* ===== MY COLOURS (edit these) ===== */
+:root {
+  --swatch1: #062D49;   /* main text (darkest) */
+  --swatch2: #094873;   /* headings, buttons */
+  --swatch3: #3da9dd;   /* accents */
+  --swatch4: #CFE8F5;   /* page background */
+  --swatch5: #EAF5FB;   /* cards */
+  --line: color-mix(in srgb, var(--swatch1) 16%, transparent);
+}
+body {
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, color-mix(in srgb, var(--swatch3) 35%, transparent), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, color-mix(in srgb, var(--swatch5) 55%, transparent), transparent 60%);
+}
+.nav-body { background: color-mix(in srgb, var(--swatch4) 88%, transparent); }
+.skill-tag { background: color-mix(in srgb, var(--swatch1) 6%, transparent); }
 
     --bg: var(--swatch4);
     --bg-panel: var(--swatch5);
